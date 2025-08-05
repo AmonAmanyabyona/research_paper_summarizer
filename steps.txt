@@ -1,0 +1,66 @@
+1.virtual environment
+python -m venv venv
+
+2.Activate it 
+source venv/bin/activate
+
+
+3.Install packages
+pip install langchain-community
+pip install azure-ai-inference
+pip install langchain chromadb sentence-transformers pandas python-dotenv
+pip install -U langchain-huggingface
+pip install -U langchain-chroma
+pip install pypdf
+pip install torch #it is required by sentence-transformers
+
+4. Reusable Modules
+
+config.py → Store environment variables like API keys.
+
+pdf_loader.py → Handles PDF loading and text extraction.
+
+embedding.py → Handles embedding model initialization.
+
+vectorstore.py → Manages ChromaDB vector storage.
+
+retriever.py → Handles retrieval operations.
+
+chat_complettion.py→ To generate responses based on input prompts..
+
+new_app.py → Runs the main script  having added rag pipeline.
+
+formatter.py → Handles document formatting.
+
+prompt_template.py → Manages structured prompts.
+
+rag_pipeline.py → Implements full retrieval and response generation.
+
+response_processing.py → Cleans, parses, and organizes responses into DataFrames.
+
+new_second_app.py → Runs everything end-to-end.
+
+
+Delete the existing vectorstore folder
+rm -rf vectorstore_test
+
+
+now add UI
+pip install streamlit
+
+the final script to run and see all the processes fall into place is:
+streamlit_app.py -> run it using:  streamlit run final_versionUI.py
+
+
+
+
+Note about the error in terminal below
+
+RuntimeError: no running event loop"
+It happens when async functions are used where asyncio isn't properly managed. 
+Since Streamlit doesn't use async execution by default, 
+some libraries (especially ones like torch or langchain) might cause conflicts.
+
+
+
+https://github.com/AmonAmanyabyona/research_paper_summarizer.git
